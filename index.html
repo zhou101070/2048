@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<div class="main">
+				<div class="score">
+					<span>分数</span>
+					<span>{{ score }}</span>
+				</div>
+				<div class="game" ref="game">
+					<div :class="{mask:true,mask_on:!state}">
+						<span class="title">{{count>1 ? '游戏结束' : ''}}</span>
+						<div class="restart" @click="restart">{{count>1 ? '重新开始' : '开始游戏'}}</div>
+						<div class="custom">
+							<p>自定义游戏</p>
+							高度:<input type="number" v-model.number="size.height" />
+							宽度:<input type="number" v-model.number="size.width" />
+						</div>
+					</div>
+					<div :class="initClass(item.value) + ' item'" v-for="item in items">{{ item.value | test }}</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
